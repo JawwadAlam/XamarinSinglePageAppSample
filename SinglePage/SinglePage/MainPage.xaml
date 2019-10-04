@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="LightBlue"></Image>
+        <Image Source="XamarinLogo" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="LightBlue"></Image>
         <Editor Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Enter Note Here!" Text="{Binding TheNote}"></Editor>
         <Button Grid.Row="2" Grid.Column="0" Text="Save" Command="{Binding SaveCommand}"></Button>
         <Button Grid.Row="2" Grid.Column="1" Text="Clear" Command="{Binding ClearCommand}"></Button>

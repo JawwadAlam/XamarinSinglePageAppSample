@@ -130,4 +130,7 @@
       <Name>SinglePage</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\XamarinLogo.png" />
+  </ItemGroup>
 </Project>
