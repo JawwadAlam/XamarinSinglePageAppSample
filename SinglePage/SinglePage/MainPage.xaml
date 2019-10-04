@@ -4,8 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:SinglePage.ViewModels"
              x:Class="SinglePage.MainPage">
-
+    <ContentPage.BindingContext>
+        <local:NotesViewModel />
+    </ContentPage.BindingContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".5*" />
@@ -20,18 +24,22 @@
         </Grid.ColumnDefinitions>
 
         <Image Source="" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="LightBlue"></Image>
-        <Editor Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Enter Note Here!"></Editor>
-        <Button Grid.Row="2" Grid.Column="0" Text="Save"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Text="Clear"></Button>
+        <Editor Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Enter Note Here!" Text="{Binding TheNote}"></Editor>
+        <Button Grid.Row="2" Grid.Column="0" Text="Save" Command="{Binding SaveCommand}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Text="Clear" Command="{Binding ClearCommand}"></Button>
 
-        <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                  HasUnevenRows="True" 
+                  ItemsSource="{Binding AllNotes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="Beige" Padding="5">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding .}"></Label>
-                        </StackLayout>
-                    </Frame>
+                    <ViewCell>
+                        <Frame BorderColor="Beige" BackgroundColor="White">
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Label Text="{Binding .}" VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
